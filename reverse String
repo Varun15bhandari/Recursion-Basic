@@ -1,0 +1,24 @@
+import java.util.Vector;
+
+class Solution {
+    // Corrected Swap Method
+    public static void Swap(Vector<Character> s, int l , int r) {
+        char temp = s.get(l);
+        s.set(l, s.get(r));
+        s.set(r, temp);
+    }
+
+    // Corrected reverse Method
+    public void reverse(Vector<Character> s, int l, int r) {
+        if (l >= r) return;
+        Swap(s, l, r);               // Swap characters at indices l and r
+        reverse(s, ++l, --r);         // Pre-increment and pre-decrement
+    }
+
+    public Vector<Character> reverseString(Vector<Character> s) {
+        int n = s.size();
+        reverse(s, 0, n - 1);         // Start reversing from both ends
+        return s;                    // Return the reversed Vector
+    }
+}
+
