@@ -1,0 +1,29 @@
+class Solution {
+    public boolean checkPrime(int n) {
+        //your code goes here
+        if (n <= 1) return false;       // 1 and below are not prime
+        if (n == 2) return true;        // 2 is the only even prime number
+        if (n % 2 == 0) return false;   // Other even numbers are not prime
+        
+        for (int i = 3; i * i <= n; i += 2) {  // Check odd numbers only
+            if (n % i == 0) return false;
+        }
+        return true;
+    }
+}
+
+
+
+class Solution {
+    public boolean prime(int num, int i) {
+        if (num <= 1) return false;  // Numbers less than or equal to 1 are not prime
+        if (i * i > num) return true; // If i exceeds sqrt(num), num is prime
+        if (num % i == 0) return false; // If num is divisible by i, it's not prime
+        
+        return prime(num, i + 1); // Recursively check for the next i
+    }
+
+    public boolean checkPrime(int num) {
+        return prime(num, 2); // Start checking from 2
+    }
+}
